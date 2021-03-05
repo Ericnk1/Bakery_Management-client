@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {AppInterceptor} from './interceptor/app.interceptor';
 import { UpdateEmployeeComponent } from './employees/update-employee/update-employee.component';
 import { UpdateProductComponent } from './products/update-product/update-product.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UpdateProductComponent } from './products/update-product/update-product
     ProductsComponent,
     NavbarComponent,
     UpdateEmployeeComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

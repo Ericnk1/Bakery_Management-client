@@ -46,7 +46,7 @@
       </td>
 
       <td>
-        <input formControlName="email" type="text" placeholder="Email" class="form-control" required="required">
+        <input formControlName="email" type="email" placeholder="Email" class="form-control" required="required">
         <div *ngIf="InvalidInput('email')" class="alert alert-danger">
           <div *ngIf="form.controls['email'].errors?.required">
             Email is required
