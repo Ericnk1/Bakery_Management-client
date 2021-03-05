@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {orderBy} from 'lodash';
 import { ProductService } from './product.service';
 import { Product } from './product';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,7 @@ export class ProductsComponent implements OnInit {
   form: FormGroup;
   products: Product[] = [];
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder, private router: Router,
               private productService: ProductService) {
   }
 
@@ -28,26 +29,34 @@ export class ProductsComponent implements OnInit {
 
   private initForm(): void {
     this.form = this.fb.group({
-      name: [''],
-      price: [''],
-      quantity: [''],
-      store: ['']
+      name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      price: ['', [Validators.required, Validators.pattern('^[0-9]')]],
+      quantity: ['', [Validators.required, Validators.pattern('^[0-9]\\d*$')]],
+      store: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
     });
   }
 
   addProduct(): void {
     const newProduct: Product = {
+      id: null,
       name: this.form.get('name').value,
       price: this.form.get('price').value,
       quantity: this.form.get('quantity').value,
       store: this.form.get('store').value
     };
-    // this.products.push(newProduct);
     this.productService.createProduct(newProduct).subscribe(value => window.location.assign('/products'));
     this.initForm();
   }
 
-  deleteProduct(product): void {
-    this.products = this.products.filter(value => value !== product);
+  private updateProduct(id: number) {
+    this.router.navigate(['/update-product', id]);
+  }
+
+  deleteProduct(id: number): void {
+    this.productService.deleteProduct(id).subscribe(value => window.location.assign('/products'));
+  }
+
+  InvalidInput(fieldName): boolean {
+    return this.form.controls[fieldName].invalid && (this.form.controls[fieldName].dirty || this.form.controls[fieldName].touched);
   }
 }

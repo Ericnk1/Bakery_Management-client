@@ -16,8 +16,8 @@
       <td>{{employee.id}}</td>
       <td>{{employee.name}}</td>
       <td>{{employee.email}}</td>
-      <td><button type="button" class="btn btn-primary" (click)="updateEmployee(employee)">Update</button></td>
-      <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee)">Delete</button></td>
+      <td><button type="button" class="btn btn-primary" (click)="updateEmployee(employee.id)">Update</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button></td>
     </tr>
 
     <tr class="input-row" [formGroup]="form">
@@ -37,9 +37,9 @@
         <input formControlName="name" type="text" placeholder="Name" class="form-control" required="required">
         <div *ngIf="InvalidInput('name')" class="alert alert-danger">
           <div *ngIf="form.controls['name'].errors?.required">
-            First name is required
+            Name is required
           </div>
-          <div *ngIf="form.controls['first_name'].errors?.pattern">
+          <div *ngIf="form.controls['name'].errors?.pattern">
             Name can contains only letters.
           </div>
         </div>
