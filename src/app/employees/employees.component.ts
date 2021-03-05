@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Employee} from './employee';
 import {EmployeeService} from './employee.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -14,7 +15,7 @@ export class EmployeesComponent implements OnInit {
   form: FormGroup;
   employees: Employee[] = [];
 
-  constructor(private employeeService: EmployeeService,
+  constructor(private employeeService: EmployeeService, private router: Router,
               private fb: FormBuilder) {
   }
 
@@ -28,7 +29,6 @@ export class EmployeesComponent implements OnInit {
 
   private initForm(): void {
     this.form = this.fb.group({
-      // id: ['', [Validators.required, Validators.pattern('^[0-9]\\d*$')]],
       id: null,
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
@@ -41,9 +41,12 @@ export class EmployeesComponent implements OnInit {
       email: this.form.get('email').value,
       name: this.form.get('name').value
     };
-    // this.employees.push(newEmployee);
     this.employeeService.createEmployee(newEmployee).subscribe(value => window.location.assign('/employees'));
     this.initForm();
+  }
+
+  private updateEmployee(employeeId: number) {
+    this.router.navigate(['/update-employee', employeeId]);
   }
 
   deleteEmployee(id: number): void {

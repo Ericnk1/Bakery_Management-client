@@ -3,6 +3,7 @@
   <table class="table table-hover table-bordered">
     <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Product</th>
       <th scope="col">Price (€)</th>
       <th scope="col">Quantity (pcs)</th>
@@ -13,19 +14,64 @@
     </thead>
     <tbody>
     <tr  *ngFor="let product of products">
+      <td>{{product.id}}</td>
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td [ngClass]="{'low' : product.quantity < 3}">{{product.quantity}}</td>
       <td>{{product.store}}</td>
-      <td><button type="button" class="btn btn-primary" (click)="updateProduct(product)">Update</button></td>
-      <td><button type="button" class="btn btn-danger" (click)="deleteProduct(product)">Delete</button></td>
+      <td><button type="button" class="btn btn-primary" (click)="updateProduct(product.id)">Update</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button></td>
     </tr>
 
     <tr class="input-row" [formGroup]="form">
-      <td><input formControlName="name" type="text" placeholder="Product" class="form-control"></td>
-      <td><input formControlName="price" type="text" placeholder="Price" class="form-control"></td>
-      <td><input formControlName="quantity" type="text" placeholder="Quantity" class="form-control"></td>
-      <td><input formControlName="store" type="text" placeholder="Store" class="form-control"></td>
+      <td>
+        <input formControlName="name" type="text" placeholder="Product" class="form-control">
+        <div *ngIf="InvalidInput('name')" class="alert alert-danger">
+          <div *ngIf="form.controls['name'].errors?.required">
+            Name is required
+          </div>
+          <div *ngIf="form.controls['name'].errors?.pattern">
+            Name can contains only letters.
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <input formControlName="price" type="text" placeholder="Price" class="form-control">
+        <div *ngIf="InvalidInput('price')" class="alert alert-danger">
+          <div *ngIf="form.controls['price'].errors?.required">
+            price is required
+          </div>
+          <div *ngIf="form.controls['price'].errors?.pattern">
+            price can contains only numbers.
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <input formControlName="quantity" type="text" placeholder="Quantity" class="form-control">
+        <div *ngIf="InvalidInput('quantity')" class="alert alert-danger">
+          <div *ngIf="form.controls['quantity'].errors?.required">
+            Quantity is required
+          </div>
+          <div *ngIf="form.controls['quantity'].errors?.pattern">
+            Quantity can contains only numbers.
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <input formControlName="store" type="text" placeholder="Store" class="form-control">
+        <div *ngIf="InvalidInput('store')" class="alert alert-danger">
+          <div *ngIf="form.controls['store'].errors?.required">
+            Store is required
+          </div>
+          <div *ngIf="form.controls['store'].errors?.pattern">
+            Store can contains only letters.
+          </div>
+        </div>
+      </td>
+
       <td><button type="submit" class="btn btn-success" style="width: 70px" (click)="addProduct()">Add</button></td>
     </tr>
     </tbody>
