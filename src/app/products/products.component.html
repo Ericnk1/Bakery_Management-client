@@ -7,14 +7,18 @@
       <th scope="col">Price (€)</th>
       <th scope="col">Quantity (pcs)</th>
       <th scope="col">Store</th>
+      <th scope="col">Actions</th>
+      <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of products">
+    <tr  *ngFor="let product of products">
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
-      <td>{{product.quantity}}</td> <!-- TODO: Display the quantity in red if it is lower than 3 -->
+      <td [ngClass]="{'low' : product.quantity < 3}">{{product.quantity}}</td>
       <td>{{product.store}}</td>
+      <td><button type="button" class="btn btn-primary" (click)="updateProduct(product)">Update</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteProduct(product)">Delete</button></td>
     </tr>
 
     <tr class="input-row" [formGroup]="form">

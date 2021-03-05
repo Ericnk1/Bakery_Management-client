@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {orderBy} from 'lodash';
 import { ProductService } from './product.service';
 import { Product } from './product';
 
@@ -19,8 +20,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.productService.getProducts().subscribe((products) => {
-      this.products = products;  // TODO: Order the products by price
+    this.productService.getProductsList().subscribe((products) => {
+      this.products = products;
+      this.products = orderBy(this.products, ['price']);
     });
   }
 
@@ -40,7 +42,12 @@ export class ProductsComponent implements OnInit {
       quantity: this.form.get('quantity').value,
       store: this.form.get('store').value
     };
-    this.products.push(newProduct);
+    // this.products.push(newProduct);
+    this.productService.createProduct(newProduct).subscribe(value => window.location.assign('/products'));
     this.initForm();
+  }
+
+  deleteProduct(product): void {
+    this.products = this.products.filter(value => value !== product);
   }
 }
