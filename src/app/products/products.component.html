@@ -25,6 +25,17 @@
 
     <tr class="input-row" [formGroup]="form">
       <td>
+        <input formControlName="id" type="text" disabled placeholder="" class="form-control">
+        <div *ngIf="InvalidInput('id')" class="alert alert-danger">
+          <div *ngIf="form.controls['id'].errors?.required">
+            Id is required
+          </div>
+          <div *ngIf="form.controls['id'].errors?.pattern">
+            Id can only be numbers
+          </div>
+        </div>
+      </td>
+      <td>
         <input formControlName="name" type="text" placeholder="Product" class="form-control">
         <div *ngIf="InvalidInput('name')" class="alert alert-danger">
           <div *ngIf="form.controls['name'].errors?.required">
@@ -72,7 +83,7 @@
         </div>
       </td>
 
-      <td><button type="submit" class="btn btn-success" style="width: 70px" (click)="addProduct()">Add</button></td>
+      <td><button type="submit" class="btn btn-success" style="width: 70px" (click)="addProduct()" [disabled]="form.invalid">Add</button></td>
     </tr>
     </tbody>
   </table>

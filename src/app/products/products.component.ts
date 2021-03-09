@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit {
   private initForm(): void {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      price: ['', [Validators.required, Validators.pattern('^[0-9]')]],
+      price: ['', [Validators.required, Validators.pattern('/^-?(0|[1-9]\\d*)?$/')]],
       quantity: ['', [Validators.required, Validators.pattern('^[0-9]\\d*$')]],
       store: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
     });
