@@ -45,7 +45,7 @@ export class EmployeesComponent implements OnInit {
     this.initForm();
   }
 
-  private updateEmployee(employeeId: number) {
+   updateEmployee(employeeId: number) {
     this.router.navigate(['/update-employee', employeeId]);
   }
 

@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit {
     this.initForm();
   }
 
-  private updateProduct(id: number) {
+   updateProduct(id: number) {
     this.router.navigate(['/update-product', id]);
   }
 
