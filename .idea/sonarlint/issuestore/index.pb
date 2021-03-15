@@ -7515,3 +7515,39 @@ O
 ,node_modules/caniuse-lite/data/regions/ZM.js,9\6\96d48b66d895e1b5bedb3be4cb9d6c1e3ffa73e3
 \
 ,node_modules/caniuse-lite/data/regions/ZW.js,1\e\1effb19a7e9c5ee2aad154c6087c768b5a6a6827
+m
+=src/app/products/update-product/update-product.component.scss,c\f\cf7e434c42893c604e3851555ad1e9a2116d9ddb
+p
+@src/app/employees/update-employee/update-employee.component.scss,3\4\34bdf6453a46068682d2711567ef8bd15a8ebbb8
+m
+=src/app/products/update-product/update-product.component.html,2\5\258f80c68bbe0f02bc0fd2abaab0b2672f3fac91
+S
+#src/app/home/home.component.spec.ts,e\f\efc0b378670728d99d7c9547ffa4d15c14a87fc4
+N
+src/app/home/home.component.ts,8\6\86792ff6839bbf45b8e8331bc49d3712dc36eba9
+p
+@src/app/employees/update-employee/update-employee.component.html,7\c\7c85929fd68e5f7ca39acc2c2bc9be0a4b055ec2
+;
+tslint.json,f\e\fe0ea8c642bdcc721c7c5a4177c93a0ab7f7ef68
+A
+tsconfig.app.json,4\3\43dc209d69db416f8cba4f9850ff857de70532a2
+<
+angular.json,e\9\e92338c6e49ff34f9022980cc89bbebd60974bad
+k
+;src/app/products/update-product/update-product.component.ts,c\a\ca5d25dfbce4b09dd9f17788d6a2178652c290cb
+W
+'node_modules/__ngcc_entry_points__.json,5\0\503ace6212415dd89f84812b2f3e96d68a7cdc42
+Q
+!node_modules/env-paths/index.d.ts,e\8\e8be4c7b848424959cf5ebb2a1c7d1aa2f02fb44
+S
+#node_modules/env-paths/package.json,b\c\bc4dec3c75c695554221769bfe4c719690df2916
+P
+ node_modules/env-paths/readme.md,2\d\2d17ae9f902540390c1824fc2e98983225cfc67f
+9
+	server.js,d\c\dc60ea9ee1ff6246bf342463277d5b914db2883d
+n
+>src/app/employees/update-employee/update-employee.component.ts,c\0\c0b074309dd5edb5f3655fe2d9093d1f13087539
+P
+ src/app/home/home.component.html,e\9\e933d99512b1bbc369b551f5b0f3431ed8fc131b
+P
+ src/app/home/home.component.scss,8\7\87183d904eae5447ff71c47d0be8bdcbe6be844d
