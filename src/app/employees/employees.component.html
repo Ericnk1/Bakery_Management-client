@@ -62,7 +62,7 @@
       </td>
 
       <td>
-        <input formControlName="jobTitle" type="text" class ="form-control" required="required">
+        <input formControlName="jobTitle" type="text" placeholder="Job Title" class ="form-control" required="required">
         <div *ngIf="InvalidInput('jobTitle')" class="alert alert-danger">
           <div *ngIf="form.controls['jobTitle'].errors?.required">
             Job Title is required
@@ -74,7 +74,7 @@
       </td>
 
       <td>
-        <input formControlName="imageUrl" type="text" class ="form-control" required="required">
+        <input formControlName="imageUrl" type="text" placeholder="ImageUrl" class ="form-control" required="required">
         <div *ngIf="InvalidInput('imageUrl')" class="alert alert-danger">
           <div *ngIf="form.controls['imageUrl'].errors?.required">
             ImageUrl is required

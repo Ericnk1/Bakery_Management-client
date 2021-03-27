@@ -40,8 +40,7 @@
       </td>
 
       <td>
-        <input formControlName="price" type="number" onkeydown="return event.keyCode === 8 ||
-event.keyCode === 46 ? true : !isNaN(Number(event.key))" placeholder="Price" class="form-control">
+        <input formControlName="price" type="number" onkeydown="return event.keyCode !== 69"  placeholder="Price" class="form-control">
         <div *ngIf="InvalidInput('price')" class="alert alert-danger">
           <div *ngIf="form.controls['price'].errors?.required">
             price is required
