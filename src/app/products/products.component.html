@@ -40,7 +40,8 @@
       </td>
 
       <td>
-        <input formControlName="price" type="text" placeholder="Price" class="form-control">
+        <input formControlName="price" type="number" onkeydown="return event.keyCode === 8 ||
+event.keyCode === 46 ? true : !isNaN(Number(event.key))" placeholder="Price" class="form-control">
         <div *ngIf="InvalidInput('price')" class="alert alert-danger">
           <div *ngIf="form.controls['price'].errors?.required">
             price is required
@@ -52,7 +53,8 @@
       </td>
 
       <td>
-        <input formControlName="quantity" type="text" placeholder="Quantity" class="form-control">
+        <input formControlName="quantity" type="number" onkeydown="return event.keyCode === 8 ||
+event.keyCode === 46 ? true : !isNaN(Number(event.key))" placeholder="Quantity" class="form-control">
         <div *ngIf="InvalidInput('quantity')" class="alert alert-danger">
           <div *ngIf="form.controls['quantity'].errors?.required">
             Quantity is required

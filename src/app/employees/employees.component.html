@@ -6,6 +6,8 @@
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
+      <th scope="col">Job Title</th>
+      <th scope="col">Image</th>
       <th scope="col">Actions</th>
       <th scope="col">Actions</th>
     </tr>
@@ -16,6 +18,8 @@
       <td>{{employee.id}}</td>
       <td>{{employee.name}}</td>
       <td>{{employee.email}}</td>
+      <td>{{employee.jobTitle}}</td>
+      <td><img width="60px" height="50px" src="{{employee.imageUrl}}" alt="image.jpg"></td>
       <td><button type="button" class="btn btn-primary" (click)="updateEmployee(employee.id)">Update</button></td>
       <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button></td>
     </tr>
@@ -53,6 +57,30 @@
           </div>
           <div *ngIf="form.controls['email'].errors?.email">
             Please enter a valid email
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <input formControlName="jobTitle" type="text" class ="form-control" required="required">
+        <div *ngIf="InvalidInput('jobTitle')" class="alert alert-danger">
+          <div *ngIf="form.controls['jobTitle'].errors?.required">
+            Job Title is required
+          </div>
+          <div *ngIf="form.controls['jobTitle'].errors?.jobTitle">
+            Please enter a valid job Title
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <input formControlName="imageUrl" type="text" class ="form-control" required="required">
+        <div *ngIf="InvalidInput('imageUrl')" class="alert alert-danger">
+          <div *ngIf="form.controls['imageUrl'].errors?.required">
+            ImageUrl is required
+          </div>
+          <div *ngIf="form.controls['imageUrl'].errors?.imageUrl">
+            Please enter a valid Link
           </div>
         </div>
       </td>

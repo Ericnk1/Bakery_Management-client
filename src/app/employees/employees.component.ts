@@ -31,7 +31,9 @@ export class EmployeesComponent implements OnInit {
     this.form = this.fb.group({
       id: null,
       email: ['', [Validators.required, Validators.email]],
-      name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
+      name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      jobTitle: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      imageUrl: ['', Validators.required]
     });
   }
 
@@ -39,7 +41,9 @@ export class EmployeesComponent implements OnInit {
     const newEmployee: Employee = {
       id: null,
       email: this.form.get('email').value,
-      name: this.form.get('name').value
+      name: this.form.get('name').value,
+      jobTitle: this.form.get('jobTitle').value,
+      imageUrl: this.form.get('imageUrl').value
     };
     this.employeeService.createEmployee(newEmployee).subscribe(value => window.location.assign('/employees'));
     this.initForm();
